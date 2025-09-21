@@ -16,7 +16,6 @@ function App() {
     city: "karachi",
     province: "sindh",
   });
-// hello
   const getData = (val) => {
     const name = val.target.name;
     const value = val.target.value;
