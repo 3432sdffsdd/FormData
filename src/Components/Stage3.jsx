@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Stage3 = ({ dt, getData, reset }) => {
+const Stage3 = ({ dt, getData, reset, save }) => {
   const Navigator = useNavigate();
 
   const dec = () => {
@@ -16,6 +16,10 @@ const Stage3 = ({ dt, getData, reset }) => {
 
         <button className="btn" onClick={reset}>
           Reset
+        </button>
+
+        <button className="btn" onClick={save}>
+          Submit
         </button>
       </div>
       <input

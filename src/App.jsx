@@ -3,11 +3,13 @@ import "./App.css";
 import Stage1 from "./Components/Stage1";
 import Stage2 from "./Components/Stage2";
 import Stage3 from "./Components/Stage3";
-import { Routes, Route } from "react-router-dom";
+
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
   const [tracker, setTracker] = useState(1);
   const [form, setForm] = useState([]);
+  const navigate = useNavigate();
   const [data, setData] = useState({
     firstname: "",
     email: "",
@@ -27,16 +29,19 @@ function App() {
   };
 
   const saveData = (e) => {
+    alert("clicked");
     e.preventDefault();
     setForm((valu) => [...valu, data]);
     setTracker(1);
+    reset();
+    navigate("/Stage1");
   };
 
   const reset = () => {
     setData({
       firstname: "",
       email: "",
-      contact: "",
+      phonenumber: "",
       qualification: "",
       address: "",
       city: "",
@@ -50,7 +55,7 @@ function App() {
 
       <Routes>
         <Route
-          path="/"
+          path="/Stage1"
           element={<Stage1 dt={data} getData={getData} reset={reset} />}
         />
         <Route
@@ -59,7 +64,9 @@ function App() {
         />
         <Route
           path="/Stage3"
-          element={<Stage3 dt={data} getData={getData} reset={reset} />}
+          element={
+            <Stage3 dt={data} getData={getData} reset={reset} save={saveData} />
+          }
         />
       </Routes>
 
